@@ -7,15 +7,19 @@ internal static class KeyPressPresenter
         Action<string> writer,
         CursorPosition? cursorPosition = null)
     {
+        if (output == '\b')
+        {
+            writer($"{output}");
+        }
         if (cursorPosition == null)
         {
             writer($"\b{output}");
             return;
         }
         var origPos = cursorPosition.GetPosition();
-        cursorPosition.SetPosition(origPos.Left - 1, origPos.Top + 1);
-        writer(output.ToString());
-        cursorPosition.SetPosition(origPos.Left, origPos.Top);
+        SetPosition(cursorPosition, origPos);
+        writer($"{output}");
+        ResetPosition(cursorPosition, origPos);
     }
 
     private static void SetPosition(
@@ -30,5 +34,12 @@ internal static class KeyPressPresenter
         {
             cursorPosition.SetPosition(1, 1);
         }
+    }
+
+    private static void ResetPosition(
+        CursorPosition cursorPosition,
+        (int Left, int Top) origPos)
+    {
+        cursorPosition.SetPosition(origPos.Left, origPos.Top);
     }
 }
