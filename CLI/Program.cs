@@ -7,7 +7,7 @@ else
 {
     Console.WriteLine("Ctl-c to exit. Start typing...");
     while (true)
-        Presenter.Present(
+        KeyPressPresenter.Present(
             Console.ReadKey().Rot13(),
             Console.Write,
             new CursorPosition(Console.GetCursorPosition, Console.SetCursorPosition));
