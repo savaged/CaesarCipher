@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rot13", "CLI\Rot13.csproj", "{210E3C28-EE51-4BB2-8A5C-57C87DB1E7EF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rot13.CLI", "CLI\Rot13.CLI.csproj", "{210E3C28-EE51-4BB2-8A5C-57C87DB1E7EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rot13.Lib", "Libs\Rot13.Lib\Rot13.Lib.csproj", "{E55222CB-4129-4F04-B6C0-D2DA364C918E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +14,9 @@ Global
 		{210E3C28-EE51-4BB2-8A5C-57C87DB1E7EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{210E3C28-EE51-4BB2-8A5C-57C87DB1E7EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{210E3C28-EE51-4BB2-8A5C-57C87DB1E7EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E55222CB-4129-4F04-B6C0-D2DA364C918E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E55222CB-4129-4F04-B6C0-D2DA364C918E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E55222CB-4129-4F04-B6C0-D2DA364C918E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E55222CB-4129-4F04-B6C0-D2DA364C918E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

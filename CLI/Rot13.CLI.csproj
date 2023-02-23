@@ -5,6 +5,12 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <AssemblyName>Rot13.CLI</AssemblyName>
+    <RootNamespace>Rot13.CLI</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Libs\Rot13.Lib\Rot13.Lib.csproj" />
+  </ItemGroup>
 
 </Project>
