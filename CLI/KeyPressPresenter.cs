@@ -7,7 +7,7 @@ internal static class KeyPressPresenter
         Action<string> writer,
         CursorPosition? cursorPosition = null)
     {
-        if (output == '\b')
+        if (output == 127)
         {
             writer($"{output}");
         }
