@@ -9,7 +9,7 @@ internal static class KeyPressPresenter
     {
         if (output == 127)
         {
-            writer($"{output}");
+            writer($"\b\b");
             return;
         }
         if (cursorPosition == null)
@@ -17,7 +17,18 @@ internal static class KeyPressPresenter
             writer($"\b{output}");
             return;
         }
-        var origPos = cursorPosition.GetPosition();
+        Write(output,
+            cursorPosition.GetPosition(),
+            writer,
+            cursorPosition);
+    }
+
+    private static void Write(
+        char output,
+        (int Left, int Top) origPos,
+        Action<string> writer,
+        CursorPosition cursorPosition)
+    {
         SetPosition(cursorPosition, origPos);
         writer($"{output}");
         ResetPosition(cursorPosition, origPos);
