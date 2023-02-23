@@ -10,6 +10,7 @@ internal static class KeyPressPresenter
         if (output == 127)
         {
             writer($"{output}");
+            return;
         }
         if (cursorPosition == null)
         {
