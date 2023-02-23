@@ -5,7 +5,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <AssemblyName>Rot13.CLI</AssemblyName>
+    <AssemblyName>Rot13</AssemblyName>
     <RootNamespace>Rot13.CLI</RootNamespace>
   </PropertyGroup>
 
