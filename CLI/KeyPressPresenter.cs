@@ -5,53 +5,55 @@ internal static class KeyPressPresenter
     public static void Present(
         char output,
         Action<string> writer,
-        CursorPosition? cursorPosition = null)
+        Func<(int Left, int Top)>? cursorPositionGetter = null,
+        Action<int, int>? cursorPositionSetter = null)
     {
         if (output == 127)
         {
             writer($"\b\b");
             return;
         }
-        if (cursorPosition == null)
+        if (cursorPositionGetter == null
+            || cursorPositionSetter == null)
         {
             writer($"\b{output}");
             return;
         }
         Write(output,
-            cursorPosition.GetPosition(),
+            cursorPositionGetter(),
             writer,
-            cursorPosition);
+            cursorPositionSetter);
     }
 
     private static void Write(
         char output,
         (int Left, int Top) origPos,
         Action<string> writer,
-        CursorPosition cursorPosition)
+        Action<int, int> cursorPositionSetter)
     {
-        SetPosition(cursorPosition, origPos);
+        SetPosition(cursorPositionSetter, origPos);
         writer($"{output}");
-        ResetPosition(cursorPosition, origPos);
+        ResetPosition(cursorPositionSetter, origPos);
     }
 
     private static void SetPosition(
-        CursorPosition cursorPosition,
+        Action<int, int> cursorPositionSetter,
         (int Left, int Top) origPos)
     {
         try
         {
-            cursorPosition.SetPosition(origPos.Left - 1, origPos.Top + 1);
+            cursorPositionSetter(origPos.Left - 1, origPos.Top + 1);
         }
         catch (ArgumentOutOfRangeException)
         {
-            cursorPosition.SetPosition(1, 1);
+            cursorPositionSetter(1, 1);
         }
     }
 
     private static void ResetPosition(
-        CursorPosition cursorPosition,
+        Action<int, int> cursorPositionSetter,
         (int Left, int Top) origPos)
     {
-        cursorPosition.SetPosition(origPos.Left, origPos.Top);
+        cursorPositionSetter(origPos.Left, origPos.Top);
     }
 }

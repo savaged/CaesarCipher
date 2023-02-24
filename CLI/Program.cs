@@ -17,10 +17,17 @@ static void PresentUntilReturnKey(char output = '\0')
         Present(
             output,
             Console.Write,
-            new CursorPosition(Console.GetCursorPosition, Console.SetCursorPosition));
+            Console.GetCursorPosition,
+            Console.SetCursorPosition);
     }
     PresentUntilReturnKey(Console.ReadKey().Rot13());
 }
 
-static void Present(char output, Action<string> writer, CursorPosition cursorPosition) =>
-    KeyPressPresenter.Present(output, writer, cursorPosition);
+static void Present(
+    char output,
+    Action<string> writer,
+    Func<(int Left, int Top)> cursorPositionGetter,
+    Action<int, int> cursorPositionSetter) =>
+    KeyPressPresenter.Present(
+        output, writer, cursorPositionGetter, cursorPositionSetter);
+
